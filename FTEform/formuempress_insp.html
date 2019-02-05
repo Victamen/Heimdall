@@ -1,0 +1,182 @@
+<!-- Formulario tabla datos administrador -->
+
+<!DOCTYPE HTML> <!-- Documento tipo HTML declarado -->
+<html lang="es"> <!-- Paquete de idioma en español -->
+
+<head>
+  	<title>Consultas base de datos</title>
+  
+  	<!-- Etiquetas META e importaciones necesarias para las funciones del framework de Materialize -->
+  	<meta name="viewport" content="width=device-width, initial-scale=1"/> <!-- Comprobar diseño responsivo -->
+    <meta charset="utf-8"/> <!-- Formato de caracteres -->
+  	
+    <!-- CSS -->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="js/materialize.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/funciones.js"></script>
+    
+    <!-- Materialize hace uso de jQuery para sus funciones -->
+    <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+	<!-- Script de carga de datos -->
+  	<script>
+    	$(document).ready(function() {
+    		//Carga de plantillas.
+    		$("#cabecera").load("plantilla.html");
+    		$("#pie").load("plantillaFooter.html");
+
+    		//Configuración calendario.
+    		calend();
+    		$('.datepicker').datepicker({});
+    		$('.datepicker2').datepicker({format: 'yy'});
+    		$('select').formSelect();
+
+    		//Autocompletar matrículas y carga de turnos de trabajo.
+    		autocom();
+  		});
+  	</script>
+</head>
+
+
+<body>
+	<!-- Div donde cargará plantilla.html -->
+	<div id="cabecera"></div>
+
+	<div class="container">
+		
+		<div class="container" style='height:50px;'></div>
+		<h3>Consultar base de datos</h3>
+		<div class="container" style='height:50px;'></div>
+ 	
+  		<!-- Aquí comienza el formulario -->
+  		<div class="row">
+    		<form action="mastertable_insp.php" class="col s12" method="POST">
+    			<!-- Matrícula aeronave -->
+      			<div class="row">
+      				<i class="material-icons left">airplanemode_active</i>
+           			<div class="input-field col s4 m3 l2">
+           				<input type="text" class="validate autocomplete" minlength="2" maxlength="7" 
+           				value="" placeholder="QB" id="mat" name="mat">
+           			</div>
+           			<label>Matrícula de Aeronave</label>
+      			</div>
+
+				<!-- Tipo aeronave --> 
+      			<div class="row">
+      				<i class="material-icons left">flight_takeoff</i>
+           			<div class="input-field col s4 m3 l2">
+           				<select id="airplane" name="airplane">
+           					<!-- Avioneta --> 
+           					<option value="">-----</option>
+   							<option value="PA28">PA28</option>
+   							<option value="DA42">DA42</option>
+   							<option value="PA34">PA34</option>
+   							<option value="R2160i">R2160i</option>
+   							<option value="T67">T67</option>
+						</select>
+					</div>
+					<label>Tipo de Aeronave</label>
+      			</div>
+
+    			<!-- Fecha inicio -->   
+      			<div class="row">
+      				<i class="material-icons left">assignment_late</i>
+      				<div class="input-field col s6 m3 l2">
+           				<input type="date" class="date" id="fechas" name="fechas" required>
+           			</div>
+           			<label>Fecha orden inicio</label>
+      			</div>	
+
+      			<!-- Fecha fin -->   
+      			<div class="row">
+      				<i class="material-icons left">assignment_turned_in</i>
+      				<div class="input-field col s6 m3 l2">
+           				<input type="date" class="date" id="fechae" name="fechae" required>
+           			</div>
+           			<label>Fecha orden fin</label>
+      			</div>
+
+      			<!-- Tipo de inspección -->  
+      			<div class="row">
+      				<i class="material-icons left">build</i>
+      				<div class="input-field col s4 m3 l2">
+           				<select id="insp" name="insp">
+           					<!-- Inspección --> 
+           					<option value="">-----</option>
+   							<option value="50h">50h</option>
+   							<option value="100h">100h</option>
+   							<option value="200h">200h</option>
+   							<option value="500h">500h</option>
+   							<option value="1000h">1000h</option>
+   							<option value="2000h">2000h</option>
+   							<option value="30d">30d</option>
+   							<option value="90d">90d</option>
+   							<option value="120d">120d</option>
+   							<option value="1 año">1 año</option>
+   							<option value="3 años">3 años</option>
+   							<option value="6 años">6 años</option>
+   							<option value="Defecto">Defecto</option>
+   							<option value="Cambio motor">Cambio motor</option>
+   							<option value="Programada">Programada</option>
+						</select>
+					</div>
+					<label>Tipo de inspección</label>
+				</div>
+
+				<!-- Nombre mecánico -->
+      			<div class="row">
+      				<i class="material-icons left">perm_identity</i>
+           			<div class="input-field col s4 m3 l2">
+           				<input type="text" class="validate" value="" placeholder="ned.stark" 
+           				id="id" name="id">
+           			</div>
+           			<label>Nombre mecánico</label>
+      			</div>
+
+      			<!-- Nombre certificador -->
+      			<div class="row">
+      				<i class="material-icons left">person</i>
+           			<div class="input-field col s4 m3 l2">
+           				<input type="text" class="validate" value="" placeholder="rob.stark" 
+           				id="cert" name="cert">
+           			</div>
+           			<label>Nombre certificador</label>
+      			</div>
+
+      			<!-- Estado de la orden -->
+      			<div class="row">
+      				<i class="material-icons left">assessment</i>
+           			<div class="input-field col s4 m3 l2">
+           				<input type="text" class="validate" value="" placeholder="cerrada" 
+           				id="estado" name="estado">
+           			</div>
+           			<label>Estado de la orden</label>
+      			</div>
+
+      			<div class="container" style='height:50px;'></div>
+
+				<!-- Botón para enviar los datos de la orden de trabajo --> 
+      			<div class="container">		
+      				<button type="submit" class="btn-large waves-effect waves-light green" 
+      				id="submitBtn" name="submitBtn">Consultar datos
+    					<i class="material-icons right">send</i>
+  					</button>
+				</div>
+				<div class="container" style='height:50px;'></div>
+  			</form>
+  		</div>
+	</div>
+
+
+	<footer>
+  		<!-- Div donde cargará plantillaFooter.html -->
+  		<div id="pie"></div>
+	</footer>
+</body>
+</html>

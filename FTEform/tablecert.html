@@ -1,0 +1,84 @@
+<!-- Consulta tabla trabajo por rango de fechas certificador -->
+
+<!DOCTYPE HTML> <!-- Documento tipo HTML declarado -->
+<html lang="es"> <!-- Paquete de idioma en español -->
+
+<head> <!-- Paquete de la ventana principal de la aplicación -->
+  	<title>Tabla</title>
+  
+  	<!-- Etiquetas META e importaciones necesarias para las funciones del framework de Materialize -->
+  	<meta name="viewport" content="width=device-width, initial-scale=1"/> <!-- Comprobar diseño responsivo -->
+    <meta charset="utf-8"/> <!-- Formato de caracteres -->
+  	
+    <!-- CSS -->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="js/materialize.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/funciones.js"></script>
+    
+    <!-- Materialize hace uso de jQuery para sus funciones -->
+    <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+	<!-- Script para cargar las plantillas -->
+  	<script>
+    	$(document).ready(function() {
+    		$("#cabecera").load("plantilla.html");
+    		$("#pie").load("plantillaFooter.html");
+
+    		calend();
+    		$('.datepicker').datepicker({});
+  		});
+  	</script>
+</head>
+	
+	
+<body>
+	<!-- Contenedor donde cargará plantilla.html -->
+	<div id="cabecera"></div>
+
+	<div class="container" style='height:50px;'></div>
+
+	<div class="container">
+		<form action="queryfte.php" class="col s12" method="POST">
+      		<!-- Fecha inicio de la orden de trabajo actual -->   
+      		<div class="row">
+      			<i class="material-icons left">event</i>
+      			<div class="input-field col s6 m3 l3">
+           			<input type="date" class="date" id="fechas" name="fechas" required>
+           		</div>
+           		<label>Fecha inicio</label>
+      		</div>	
+
+      		<!-- Fecha fin de la orden de trabajo actual -->   
+      		<div class="row">
+      			<i class="material-icons left">event</i>
+      			<div class="input-field col s6 m3 l3">
+           			<input type="date" class="date" id="fechae" name="fechae" required>
+           		</div>
+           		<label>Fecha fin</label>
+      		</div>
+
+      		<button type="submit" class="btn-small waves-effect waves-light green" 
+      			id="submitBtn" name="submitBtn">Consultar
+    			<i class="material-icons right">send</i>
+  			</button>
+
+  			<button type="button" class="btn-small waves-effect waves-light blue" 
+      		id="exwo" name="exwo" onclick="location.href='/FTEform/menucert.html'">
+      		Volver</button>
+		</form>
+	</div>
+
+    <div class="container" style='height:50px;'></div>
+
+
+	<footer>
+  		<div id="pie"></div> <!-- Div donde cargará plantillaFooter.html -->
+	</footer>
+</body>
+</html>

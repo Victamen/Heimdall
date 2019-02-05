@@ -1,0 +1,99 @@
+<!-- Plantilla menú y css superior -->
+
+<!DOCTYPE HTML> <!-- Documento tipo HTML declarado -->
+<html lang="es"> <!-- Paquete de idioma en español -->
+
+<head> <!-- Cabecera de la plantilla -->
+    <title>Plantilla de la aplicación digital</title> 
+
+  	<!-- Etiquetas META e importaciones necesarias para las funciones del framework de Materialize -->
+  	<!-- No es necesario que estén aquí, su único propósito es que podamos probar la plantilla de forma independiente -->
+  	<meta name="viewport" content="width=device-width, initial-scale=1"/> <!-- Comprobar diseño responsivo -->
+    <meta charset="utf-8"/> <!-- Formato de caracteres -->
+
+  	<!-- CSS -->
+  	<link type="text/css" rel="stylesheet" href="css/materialize.min.css">
+  	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  	<!-- Javascript -->
+  	<script type="text/javascript" src="js/materialize.js"></script>
+  	<script type="text/javascript" src="js/materialize.min.js"></script>
+  	<script type="text/javascript" src="js/funciones.js"></script>
+  	
+  	<!-- Materialize hace uso de jQuery para sus funciones -->
+  	<script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+</head>
+
+
+<body> <!-- Cuerpo de la plantilla -->
+  	<div>
+    	<img src="images/fte.jpg" style="width: 100%;" alt="Imagen de cabecera" /> <!-- Imagen de cabecera mostrada -->
+  	</div>
+  
+  	<!-- Barra superior de navegación -->
+  	<nav>
+      	<div class="nav-wrapper light-blue darken-4">
+      		<div class="container">
+        		<a href="#!" class="brand-logo"></a>
+        		<a href="#" data-activates="mobile-demo" class="button-collapse" ><em class="material-icons">menu</em></a>
+        
+        		<!-- Menú que aparece cuando abrimos la aplicación en un PC -->
+        		<ul class="right hide-on-med-and-down">
+          			<li>
+          				<button type="button" class="btn-large waves-effect waves-light green" 
+      					id="lastplane" name="lastplane" 
+      					onclick="location.href='/FTEform/mechmenu.php'">MENÚ
+  						</button>
+          			</li>
+
+          			<li>
+          				<button type="button" class="btn-large waves-effect waves-light orange" 
+      					id="lastplane" name="lastplane" 
+      					onclick="location.href='/FTEform/lastplane.html'">ÚLTIMO AVIÓN
+  						</button>
+          			</li>
+
+          			<li>
+          				<button type="button" class="btn-large waves-effect waves-light red" 
+      					id="out" name="out" 
+      					onclick="location.href='/FTEform/logout.php'">SALIR
+  						</button>
+  					</li>
+        		</ul>
+      
+      			<!-- Menú que aparece cuando abrimos la aplicación en un teléfono Móvil -->
+        		<ul class="side-nav" id="mobile-demo">
+          			<li><img src="images/fte.jpg" style="width: 100%;"  alt="Imagen de cabecera"  /></li>
+          			<li>
+          				<button type="button" class="btn-large waves-effect waves-light green" 
+      					id="lastplane" name="lastplane" 
+      					onclick="location.href='/FTEform/mechmenu.php'">MENÚ
+  						</button>
+          			</li>
+
+          			<li>
+          				<button type="button" class="btn-large waves-effect waves-light orange" 
+      					id="lastplane" name="lastplane" 
+      					onclick="location.href='/FTEform/lastplane.html'">ÚLTIMO AVIÓN
+  						</button>
+          			</li>
+
+          			<li>
+          				<button type="button" class="btn-large waves-effect waves-light red" 
+      					id="out" name="out" 
+      					onclick="location.href='/FTEform/logout.php'">SALIR
+  						</button>
+          			</li>
+        		</ul>
+        	</div>
+      	</div>
+    
+      	<!-- Script necesario para el funcionamiento de la barra de navegación lateral en modo móvil -->
+      	<script>
+        	$(document).ready(function(){
+    	  		$(".button-collapse").sideNav();
+        	});
+      	</script>
+    </nav>
+</body>
+</html>

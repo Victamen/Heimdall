@@ -1,0 +1,62 @@
+<!-- Ventana cierre de orden de trabajo -->
+
+<!DOCTYPE HTML> <!-- Documento tipo HTML declarado -->
+<html lang="es"> <!-- Paquete de idioma en español -->
+
+<head> <!-- Paquete de la ventana principal de la aplicación -->
+  	<title>Success</title>
+  
+  	<!-- Etiquetas META e importaciones necesarias para las funciones del framework de Materialize -->
+  	<meta name="viewport" content="width=device-width, initial-scale=1"/> <!-- Comprobar diseño responsivo -->
+    <meta charset="utf-8"/> <!-- Formato de caracteres -->
+  	
+    <!-- CSS -->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="js/materialize.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/funciones.js"></script>
+    
+    <!-- Materialize hace uso de jQuery para sus funciones -->
+    <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+	<!-- Script para cargar las plantillas -->
+  	<script>
+    	$(document).ready(function() {
+    		$("#cabecera").load("plantilla.html");
+    		$("#pie").load("plantillaFooter.html");
+  		});
+  	</script>
+</head>
+	
+	
+<body>
+	<!-- Contenedor donde cargará plantilla.html -->
+	<div id="cabecera"></div>
+
+	<div class="container" style='height:50px;'></div>
+
+	<div class="container">
+ 
+		<p>La orden ha sido cerrada.</p>
+
+      	<div class="container" style='height:50px;'></div>
+
+      	<!-- Botones -->
+		<button type="button" class="btn-large waves-effect waves-light light-green darken-2" 
+      	id="menu" name="menu" onclick="location.href='/FTEform/menuempress.html'">
+      	Volver al menu</button>
+	</div>
+
+    <div class="container" style='height:50px;'></div>
+
+
+	<footer>
+  		<div id="pie"></div> <!-- Div donde cargará plantillaFooter.html -->
+	</footer>
+</body>
+</html>

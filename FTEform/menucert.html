@@ -1,0 +1,108 @@
+<!-- Menú acciones certificador -->
+
+<!DOCTYPE HTML> <!-- Documento tipo HTML declarado -->
+<html lang="es"> <!-- Paquete de idioma en español -->
+
+<head> <!-- Paquete de la ventana principal de la aplicación -->
+  	<title>Menu</title>
+  
+  	<!-- Etiquetas META e importaciones necesarias para las funciones del framework de Materialize -->
+  	<meta name="viewport" content="width=device-width, initial-scale=1"/> <!-- Comprobar diseño responsivo -->
+    <meta charset="utf-8"/> <!-- Formato de caracteres -->
+  	
+    <!-- CSS -->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="js/materialize.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/funciones.js"></script>
+    
+    <!-- Materialize hace uso de jQuery para sus funciones -->
+    <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+	<!-- Script para cargar las plantillas -->
+  	<script>
+    	$(document).ready(function() {
+    		$("#cabecera").load("plantilla.html");
+    		$("#pie").load("plantillaFooter.html");
+
+    		//Autocompletar matrículas y carga de turnos de trabajo.
+    		autocom();
+  		});
+  	</script>
+</head>
+	
+	
+<body>
+	<!-- Contenedor donde cargará plantilla.html -->
+	<div id="cabecera"></div>
+
+	<div class="container" style='height:100px;'></div>
+
+	<div class="container">
+		<form action="newocert.php" class="col s12" method="POST">
+
+			<!-- Código de la orden de trabajo -->
+      		<div class="row">
+      			<i class="material-icons left">airplanemode_active</i>
+           		<div class="input-field col s2 m1 l1">
+           			<input type="text" class="validate autocomplete" minlength="2" maxlength="2" 
+           			pattern="[A-Z]{2}" placeholder="QB" id="orden" name="orden" onchange="validorder()" required>
+           		</div>
+
+           		<div class="input-field col s2 m1 l1">
+           			<input type="text" class="validate" minlength="3" maxlength="3" 
+           			pattern="[0-9]{3}" placeholder="001" id="num" name="num" required>
+           		</div>
+
+           		<div class="input-field col s2 m1 l1">
+           			<input type="text" class="validate" minlength="2" maxlength="2" 
+           			pattern="[0-9]{2}" placeholder="19" id="ann" name="ann" required>
+           		</div>
+           		<label>Orden de trabajo</label>
+      		</div>
+
+			<!-- ¿Eres certificador de esta orden? -->   
+      		<div class="row">
+      		<i class="material-icons left">border_color</i>
+    			<p>
+    				<label>
+       					<input type="checkbox" class="filled-in" id="amicertif" name="amicertif" value="yes">
+       					<span>¿Certificas esta orden?</span>
+    				</label>
+    			</p>
+      		</div>	
+
+      		<div class="container" style='height:50px;'></div>
+
+			<!-- Botones -->
+			<button type="submit" class="btn-large waves-effect waves-light light-green darken-2" 
+      		id="newo" name="newo">
+      		Nuevo registro</button>
+
+      		<button type="button" class="btn-large waves-effect waves-light blue" 
+      		id="quwo" name="quwo" onclick="location.href='/FTEform/tablecert.html'">
+      		Consultar por fecha</button>
+
+      		<button type="button" class="btn-large waves-effect waves-light blue" 
+      		id="quwo2" name="quwo2" onclick="location.href='/FTEform/table2cert.html'">
+      		Consultar por orden</button>
+
+      		<button type="button" class="btn-large waves-effect waves-light blue" 
+      		id="quwo3" name="quwo3" onclick="location.href='/FTEform/table3cert.html'">
+      		Consultar por avión</button>
+    	</form>
+	</div>
+
+    <div class="container" style='height:100px;'></div>
+
+
+	<footer>
+  		<div id="pie"></div> <!-- Div donde cargará plantillaFooter.html -->
+	</footer>
+</body>
+</html>

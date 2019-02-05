@@ -1,0 +1,631 @@
+<!-- Formulario primera orden mecánico -->
+
+<!DOCTYPE HTML> <!-- Documento tipo HTML declarado -->
+<html lang="es"> <!-- Paquete de idioma en español -->
+
+<head>
+  	<title>Formulario de la orden de trabajo</title>
+  
+  	<!-- Etiquetas META e importaciones necesarias para las funciones del framework de Materialize -->
+  	<meta name="viewport" content="width=device-width, initial-scale=1"/> <!-- Comprobar diseño responsivo -->
+    <meta charset="utf-8"/> <!-- Formato de caracteres -->
+  	
+    <!-- CSS -->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="js/materialize.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/funciones.js"></script>
+    
+    <!-- Materialize hace uso de jQuery para sus funciones -->
+    <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+	<!-- Script de carga de datos -->
+  	<script>
+    	$(document).ready(function() {
+    		//Carga de plantillas.
+    		$("#cabecera").load("plantilla.html");
+    		$("#pie").load("plantillaFooter.html");
+
+    		//Configuración calendario.
+    		calend();
+    		$('.datepicker').datepicker({});
+    		$('.datepicker2').datepicker({format: 'yy'});
+    		$('select').formSelect();
+
+    		//Autocompletar matrículas y carga de turnos de trabajo.
+    		autocom();
+  		});
+  	</script>
+</head>
+
+
+<body>
+	<!-- Div donde cargará plantilla.html -->
+	<div id="cabecera"></div>
+
+	<div class="container">
+		
+		<div class="container" style='height:50px;'></div>
+		<h3>Orden de Trabajo</h3>
+		<div class="container" style='height:50px;'></div>
+ 	
+  		<!-- Aquí comienza el formulario -->
+  		<div class="row">
+    		<form action="insertmechinsp.php" class="col s12" method="POST">
+    			<!-- Fecha de la orden de trabajo actual -->   
+      			<div class="row">
+      				<i class="material-icons left">event</i>
+      				<div class="input-field col s6 m3 l3">
+           				<input type="date" class="date" id="fecha" name="fecha"
+           				required>
+           			</div>
+           			<label>Fecha orden</label>
+      			</div>	
+
+
+      			<div class="container" style='height:50px;'></div>
+
+
+      			<!-- Horas del turno de trabajo -->	
+      			<div class="row">
+      				<p>Primer turno de trabajo:</p>
+      				<i class="material-icons left">access_time</i>
+
+      				<div class="input-field col s2 m2 l1">
+           				<p>Hora inicio</p>
+           				<p>Hora fin</p>
+           			</div>
+
+           			<div class="input-field col s2 m2 l1">
+           				<select id="hs1h" name="hs1h" onchange="bighourtest2('hs1h', 'he1h', 'hs2h', 'he2h', 
+           				'hs3h', 'he3h', 'hs4h', 'he4h', 'hs5h', 'he5h',
+           				'hs1m', 'he1m', 'hs2m', 'he2m', 'hs3m', 'he3m', 'hs4m', 'he4m', 'hs5m', 'he5m')" 
+           				required>
+           					<option value="00">00</option>
+   							<option value="07">07</option>
+   							<option value="08">08</option>
+   							<option value="09">09</option>
+   							<option value="10">10</option>
+   							<option value="11">11</option>
+   							<option value="12">12</option>
+   							<option value="13">13</option>
+   							<option value="14">14</option>
+   							<option value="15">15</option>
+   							<option value="16">16</option>
+   							<option value="17">17</option>
+   							<option value="18">18</option>
+   							<option value="19">19</option>
+   							<option value="20">20</option>
+						</select>
+
+						<select id="he1h" name="he1h" onchange="bighourtest2('hs1h', 'he1h', 'hs2h', 'he2h', 
+           				'hs3h', 'he3h', 'hs4h', 'he4h', 'hs5h', 'he5h',
+           				'hs1m', 'he1m', 'hs2m', 'he2m', 'hs3m', 'he3m', 'hs4m', 'he4m', 'hs5m', 'he5m')" 
+           				required>
+           					<option value="00">00</option>
+   							<option value="07">07</option>
+   							<option value="08">08</option>
+   							<option value="09">09</option>
+   							<option value="10">10</option>
+   							<option value="11">11</option>
+   							<option value="12">12</option>
+   							<option value="13">13</option>
+   							<option value="14">14</option>
+   							<option value="15">15</option>
+   							<option value="16">16</option>
+   							<option value="17">17</option>
+   							<option value="18">18</option>
+   							<option value="19">19</option>
+   							<option value="20">20</option>
+						</select>
+           			</div>
+           			
+           			<div class="input-field col s2 m2 l1">
+           				<select id="hs1m" name="hs1m" onchange="bighourtest2('hs1h', 'he1h', 'hs2h', 'he2h', 
+           				'hs3h', 'he3h', 'hs4h', 'he4h', 'hs5h', 'he5h',
+           				'hs1m', 'he1m', 'hs2m', 'he2m', 'hs3m', 'he3m', 'hs4m', 'he4m', 'hs5m', 'he5m')" 
+           				required>
+           					<option value="00">00</option>
+   							<option value="05">05</option>
+   							<option value="10">10</option>
+   							<option value="15">15</option>
+   							<option value="20">20</option>
+   							<option value="25">25</option>
+   							<option value="30">30</option>
+   							<option value="35">35</option>
+   							<option value="40">40</option>
+   							<option value="45">45</option>
+   							<option value="50">50</option>
+   							<option value="55">55</option>
+						</select>
+
+						<select id="he1m" name="he1m" onchange="bighourtest2('hs1h', 'he1h', 'hs2h', 'he2h', 
+           				'hs3h', 'he3h', 'hs4h', 'he4h', 'hs5h', 'he5h',
+           				'hs1m', 'he1m', 'hs2m', 'he2m', 'hs3m', 'he3m', 'hs4m', 'he4m', 'hs5m', 'he5m')" 
+           				required>
+           					<option value="00">00</option>
+   							<option value="05">05</option>
+   							<option value="10">10</option>
+   							<option value="15">15</option>
+   							<option value="20">20</option>
+   							<option value="25">25</option>
+   							<option value="30">30</option>
+   							<option value="35">35</option>
+   							<option value="40">40</option>
+   							<option value="45">45</option>
+   							<option value="50">50</option>
+   							<option value="55">55</option>
+						</select>
+           			</div>
+
+           			<div class="input-field col s3 m3 l3">
+          				<textarea id="datos1" name="datos1" class="materialize-textarea"></textarea>
+          				<label>Datos turno 1</label>
+        			</div>
+      			</div>
+      			
+
+      			<div class="row">
+      				<p>Segundo turno de trabajo:</p>
+      				<i class="material-icons left">access_time</i>
+
+      				<div class="input-field col s2 m2 l1">
+           				<p>Hora inicio</p>
+           				<p>Hora fin</p>
+           			</div>
+
+           			<div class="input-field col s2 m2 l1">
+           				<select id="hs2h" name="hs2h" onchange="bighourtest2('hs1h', 'he1h', 'hs2h', 'he2h', 
+           				'hs3h', 'he3h', 'hs4h', 'he4h', 'hs5h', 'he5h',
+           				'hs1m', 'he1m', 'hs2m', 'he2m', 'hs3m', 'he3m', 'hs4m', 'he4m', 'hs5m', 'he5m')">
+           					<option value="00">00</option>
+   							<option value="07">07</option>
+   							<option value="08">08</option>
+   							<option value="09">09</option>
+   							<option value="10">10</option>
+   							<option value="11">11</option>
+   							<option value="12">12</option>
+   							<option value="13">13</option>
+   							<option value="14">14</option>
+   							<option value="15">15</option>
+   							<option value="16">16</option>
+   							<option value="17">17</option>
+   							<option value="18">18</option>
+   							<option value="19">19</option>
+   							<option value="20">20</option>
+						</select>
+
+						<select id="he2h" name="he2h" onchange="bighourtest2('hs1h', 'he1h', 'hs2h', 'he2h', 
+           				'hs3h', 'he3h', 'hs4h', 'he4h', 'hs5h', 'he5h',
+           				'hs1m', 'he1m', 'hs2m', 'he2m', 'hs3m', 'he3m', 'hs4m', 'he4m', 'hs5m', 'he5m')">
+           					<option value="00">00</option>
+   							<option value="07">07</option>
+   							<option value="08">08</option>
+   							<option value="09">09</option>
+   							<option value="10">10</option>
+   							<option value="11">11</option>
+   							<option value="12">12</option>
+   							<option value="13">13</option>
+   							<option value="14">14</option>
+   							<option value="15">15</option>
+   							<option value="16">16</option>
+   							<option value="17">17</option>
+   							<option value="18">18</option>
+   							<option value="19">19</option>
+   							<option value="20">20</option>
+						</select>
+           			</div>
+
+           			<div class="input-field col s2 m2 l1">
+           				<select id="hs2m" name="hs2m" onchange="bighourtest2('hs1h', 'he1h', 'hs2h', 'he2h', 
+           				'hs3h', 'he3h', 'hs4h', 'he4h', 'hs5h', 'he5h',
+           				'hs1m', 'he1m', 'hs2m', 'he2m', 'hs3m', 'he3m', 'hs4m', 'he4m', 'hs5m', 'he5m')">
+           					<option value="00">00</option>
+   							<option value="05">05</option>
+   							<option value="10">10</option>
+   							<option value="15">15</option>
+   							<option value="20">20</option>
+   							<option value="25">25</option>
+   							<option value="30">30</option>
+   							<option value="35">35</option>
+   							<option value="40">40</option>
+   							<option value="45">45</option>
+   							<option value="50">50</option>
+   							<option value="55">55</option>
+						</select>
+
+						<select id="he2m" name="he2m" onchange="bighourtest2('hs1h', 'he1h', 'hs2h', 'he2h', 
+           				'hs3h', 'he3h', 'hs4h', 'he4h', 'hs5h', 'he5h',
+           				'hs1m', 'he1m', 'hs2m', 'he2m', 'hs3m', 'he3m', 'hs4m', 'he4m', 'hs5m', 'he5m')">
+           					<option value="00">00</option>
+   							<option value="05">05</option>
+   							<option value="10">10</option>
+   							<option value="15">15</option>
+   							<option value="20">20</option>
+   							<option value="25">25</option>
+   							<option value="30">30</option>
+   							<option value="35">35</option>
+   							<option value="40">40</option>
+   							<option value="45">45</option>
+   							<option value="50">50</option>
+   							<option value="55">55</option>
+						</select>
+           			</div>
+
+           			<div class="input-field col s3 m3 l3">
+          				<textarea id="datos2" name="datos2" class="materialize-textarea"></textarea>
+          				<label>Datos turno 2</label>
+        			</div>
+      			</div>
+
+
+      			<div class="row">
+      				<p>Tercer turno de trabajo:</p>
+      				<i class="material-icons left">access_time</i>
+
+      				<div class="input-field col s2 m2 l1">
+           				<p>Hora inicio</p>
+           				<p>Hora fin</p>
+           			</div>
+
+           			<div class="input-field col s2 m2 l1">
+           				<select id="hs3h" name="hs3h" onchange="bighourtest2('hs1h', 'he1h', 'hs2h', 'he2h', 
+           				'hs3h', 'he3h', 'hs4h', 'he4h', 'hs5h', 'he5h',
+           				'hs1m', 'he1m', 'hs2m', 'he2m', 'hs3m', 'he3m', 'hs4m', 'he4m', 'hs5m', 'he5m')">
+           					<option value="00">00</option>
+   							<option value="07">07</option>
+   							<option value="08">08</option>
+   							<option value="09">09</option>
+   							<option value="10">10</option>
+   							<option value="11">11</option>
+   							<option value="12">12</option>
+   							<option value="13">13</option>
+   							<option value="14">14</option>
+   							<option value="15">15</option>
+   							<option value="16">16</option>
+   							<option value="17">17</option>
+   							<option value="18">18</option>
+   							<option value="19">19</option>
+   							<option value="20">20</option>
+						</select>
+
+						<select id="he3h" name="he3h" onchange="bighourtest2('hs1h', 'he1h', 'hs2h', 'he2h', 
+           				'hs3h', 'he3h', 'hs4h', 'he4h', 'hs5h', 'he5h',
+           				'hs1m', 'he1m', 'hs2m', 'he2m', 'hs3m', 'he3m', 'hs4m', 'he4m', 'hs5m', 'he5m')">
+           					<option value="00">00</option>
+   							<option value="07">07</option>
+   							<option value="08">08</option>
+   							<option value="09">09</option>
+   							<option value="10">10</option>
+   							<option value="11">11</option>
+   							<option value="12">12</option>
+   							<option value="13">13</option>
+   							<option value="14">14</option>
+   							<option value="15">15</option>
+   							<option value="16">16</option>
+   							<option value="17">17</option>
+   							<option value="18">18</option>
+   							<option value="19">19</option>
+   							<option value="20">20</option>
+						</select>
+           			</div>
+
+           			<div class="input-field col s2 m2 l1">
+           				<select id="hs3m" name="hs3m" onchange="bighourtest2('hs1h', 'he1h', 'hs2h', 'he2h', 
+           				'hs3h', 'he3h', 'hs4h', 'he4h', 'hs5h', 'he5h',
+           				'hs1m', 'he1m', 'hs2m', 'he2m', 'hs3m', 'he3m', 'hs4m', 'he4m', 'hs5m', 'he5m')">
+           					<option value="00">00</option>
+   							<option value="05">05</option>
+   							<option value="10">10</option>
+   							<option value="15">15</option>
+   							<option value="20">20</option>
+   							<option value="25">25</option>
+   							<option value="30">30</option>
+   							<option value="35">35</option>
+   							<option value="40">40</option>
+   							<option value="45">45</option>
+   							<option value="50">50</option>
+   							<option value="55">55</option>
+						</select>
+
+						<select id="he3m" name="he3m" onchange="bighourtest2('hs1h', 'he1h', 'hs2h', 'he2h', 
+           				'hs3h', 'he3h', 'hs4h', 'he4h', 'hs5h', 'he5h',
+           				'hs1m', 'he1m', 'hs2m', 'he2m', 'hs3m', 'he3m', 'hs4m', 'he4m', 'hs5m', 'he5m')">
+           					<option value="00">00</option>
+   							<option value="05">05</option>
+   							<option value="10">10</option>
+   							<option value="15">15</option>
+   							<option value="20">20</option>
+   							<option value="25">25</option>
+   							<option value="30">30</option>
+   							<option value="35">35</option>
+   							<option value="40">40</option>
+   							<option value="45">45</option>
+   							<option value="50">50</option>
+   							<option value="55">55</option>
+						</select>
+           			</div>
+        			
+        			<div class="input-field col s3 m3 l3">
+          				<textarea id="datos3" name="datos3" class="materialize-textarea"></textarea>
+          				<label>Datos turno 3</label>
+        			</div>
+      			</div>
+
+
+      			<div class="row">
+      				<p>Cuarto turno de trabajo:</p>
+      				<i class="material-icons left">access_time</i>
+
+      				<div class="input-field col s2 m2 l1">
+           				<p>Hora inicio</p>
+           				<p>Hora fin</p>
+           			</div>
+
+           			<div class="input-field col s2 m2 l1">
+           				<select id="hs4h" name="hs4h" onchange="bighourtest2('hs1h', 'he1h', 'hs2h', 'he2h', 
+           				'hs3h', 'he3h', 'hs4h', 'he4h', 'hs5h', 'he5h',
+           				'hs1m', 'he1m', 'hs2m', 'he2m', 'hs3m', 'he3m', 'hs4m', 'he4m', 'hs5m', 'he5m')">
+           					<option value="00">00</option>
+   							<option value="07">07</option>
+   							<option value="08">08</option>
+   							<option value="09">09</option>
+   							<option value="10">10</option>
+   							<option value="11">11</option>
+   							<option value="12">12</option>
+   							<option value="13">13</option>
+   							<option value="14">14</option>
+   							<option value="15">15</option>
+   							<option value="16">16</option>
+   							<option value="17">17</option>
+   							<option value="18">18</option>
+   							<option value="19">19</option>
+   							<option value="20">20</option>
+						</select>
+
+						<select id="he4h" name="he4h" onchange="bighourtest2('hs1h', 'he1h', 'hs2h', 'he2h', 
+           				'hs3h', 'he3h', 'hs4h', 'he4h', 'hs5h', 'he5h',
+           				'hs1m', 'he1m', 'hs2m', 'he2m', 'hs3m', 'he3m', 'hs4m', 'he4m', 'hs5m', 'he5m')">
+           					<option value="00">00</option>
+   							<option value="07">07</option>
+   							<option value="08">08</option>
+   							<option value="09">09</option>
+   							<option value="10">10</option>
+   							<option value="11">11</option>
+   							<option value="12">12</option>
+   							<option value="13">13</option>
+   							<option value="14">14</option>
+   							<option value="15">15</option>
+   							<option value="16">16</option>
+   							<option value="17">17</option>
+   							<option value="18">18</option>
+   							<option value="19">19</option>
+   							<option value="20">20</option>
+						</select>
+           			</div>
+
+           			<div class="input-field col s2 m2 l1">
+           				<select id="hs4m" name="hs4m" onchange="bighourtest2('hs1h', 'he1h', 'hs2h', 'he2h', 
+           				'hs3h', 'he3h', 'hs4h', 'he4h', 'hs5h', 'he5h',
+           				'hs1m', 'he1m', 'hs2m', 'he2m', 'hs3m', 'he3m', 'hs4m', 'he4m', 'hs5m', 'he5m')">
+           					<option value="00">00</option>
+   							<option value="05">05</option>
+   							<option value="10">10</option>
+   							<option value="15">15</option>
+   							<option value="20">20</option>
+   							<option value="25">25</option>
+   							<option value="30">30</option>
+   							<option value="35">35</option>
+   							<option value="40">40</option>
+   							<option value="45">45</option>
+   							<option value="50">50</option>
+   							<option value="55">55</option>
+						</select>
+
+						<select id="he4m" name="he4m" onchange="bighourtest2('hs1h', 'he1h', 'hs2h', 'he2h', 
+           				'hs3h', 'he3h', 'hs4h', 'he4h', 'hs5h', 'he5h',
+           				'hs1m', 'he1m', 'hs2m', 'he2m', 'hs3m', 'he3m', 'hs4m', 'he4m', 'hs5m', 'he5m')">
+           					<option value="00">00</option>
+   							<option value="05">05</option>
+   							<option value="10">10</option>
+   							<option value="15">15</option>
+   							<option value="20">20</option>
+   							<option value="25">25</option>
+   							<option value="30">30</option>
+   							<option value="35">35</option>
+   							<option value="40">40</option>
+   							<option value="45">45</option>
+   							<option value="50">50</option>
+   							<option value="55">55</option>
+						</select>
+           			</div>
+        			
+        			<div class="input-field col s3 m3 l3">
+          				<textarea id="datos4" name="datos4" class="materialize-textarea"></textarea>
+          				<label>Datos turno 4</label>
+        			</div>
+      			</div>
+
+
+      			<div class="row">
+      				<p>Quinto turno de trabajo:</p>
+      				<i class="material-icons left">access_time</i>
+
+      				<div class="input-field col s2 m2 l1">
+           				<p>Hora inicio</p>
+           				<p>Hora fin</p>
+           			</div>
+
+           			<div class="input-field col s2 m2 l1">
+           				<select id="hs5h" name="hs5h" onchange="bighourtest2('hs1h', 'he1h', 'hs2h', 'he2h', 
+           				'hs3h', 'he3h', 'hs4h', 'he4h', 'hs5h', 'he5h',
+           				'hs1m', 'he1m', 'hs2m', 'he2m', 'hs3m', 'he3m', 'hs4m', 'he4m', 'hs5m', 'he5m')">
+           					<option value="00">00</option>
+   							<option value="07">07</option>
+   							<option value="08">08</option>
+   							<option value="09">09</option>
+   							<option value="10">10</option>
+   							<option value="11">11</option>
+   							<option value="12">12</option>
+   							<option value="13">13</option>
+   							<option value="14">14</option>
+   							<option value="15">15</option>
+   							<option value="16">16</option>
+   							<option value="17">17</option>
+   							<option value="18">18</option>
+   							<option value="19">19</option>
+   							<option value="20">20</option>
+						</select>
+
+						<select id="he5h" name="he5h" onchange="bighourtest2('hs1h', 'he1h', 'hs2h', 'he2h', 
+           				'hs3h', 'he3h', 'hs4h', 'he4h', 'hs5h', 'he5h',
+           				'hs1m', 'he1m', 'hs2m', 'he2m', 'hs3m', 'he3m', 'hs4m', 'he4m', 'hs5m', 'he5m')">
+           					<option value="00">00</option>
+   							<option value="07">07</option>
+   							<option value="08">08</option>
+   							<option value="09">09</option>
+   							<option value="10">10</option>
+   							<option value="11">11</option>
+   							<option value="12">12</option>
+   							<option value="13">13</option>
+   							<option value="14">14</option>
+   							<option value="15">15</option>
+   							<option value="16">16</option>
+   							<option value="17">17</option>
+   							<option value="18">18</option>
+   							<option value="19">19</option>
+   							<option value="20">20</option>
+						</select>
+           			</div>
+
+           			<div class="input-field col s2 m2 l1">
+           				<select id="hs5m" name="hs5m" onchange="bighourtest2('hs1h', 'he1h', 'hs2h', 'he2h', 
+           				'hs3h', 'he3h', 'hs4h', 'he4h', 'hs5h', 'he5h',
+           				'hs1m', 'he1m', 'hs2m', 'he2m', 'hs3m', 'he3m', 'hs4m', 'he4m', 'hs5m', 'he5m')">
+           					<option value="00">00</option>
+   							<option value="05">05</option>
+   							<option value="10">10</option>
+   							<option value="15">15</option>
+   							<option value="20">20</option>
+   							<option value="25">25</option>
+   							<option value="30">30</option>
+   							<option value="35">35</option>
+   							<option value="40">40</option>
+   							<option value="45">45</option>
+   							<option value="50">50</option>
+   							<option value="55">55</option>
+						</select>
+
+						<select id="he5m" name="he5m" onchange="bighourtest2('hs1h', 'he1h', 'hs2h', 'he2h', 
+           				'hs3h', 'he3h', 'hs4h', 'he4h', 'hs5h', 'he5h',
+           				'hs1m', 'he1m', 'hs2m', 'he2m', 'hs3m', 'he3m', 'hs4m', 'he4m', 'hs5m', 'he5m')">
+           					<option value="00">00</option>
+   							<option value="05">05</option>
+   							<option value="10">10</option>
+   							<option value="15">15</option>
+   							<option value="20">20</option>
+   							<option value="25">25</option>
+   							<option value="30">30</option>
+   							<option value="35">35</option>
+   							<option value="40">40</option>
+   							<option value="45">45</option>
+   							<option value="50">50</option>
+   							<option value="55">55</option>
+						</select>
+           			</div>
+        			
+        			<div class="input-field col s3 m3 l3">
+          				<textarea id="datos5" name="datos5" class="materialize-textarea"></textarea>
+          				<label>Datos turno 5</label>
+        			</div>
+      			</div>
+
+
+      			<div class="container" style='height:50px;'></div>
+
+
+      			<!-- Tipo inspección --> 
+      			<div class="row" id="myDiv1" name="myDiv1">
+      				<p>Tipo de inspección:</p>
+      				<i class="material-icons left">assignment</i>
+           			<div class="input-field col s4 m3 l2">
+           				<select id="airplane" name="airplane"
+           				onchange="bighourtest2('hs1h', 'he1h', 'hs2h', 'he2h', 
+           				'hs3h', 'he3h', 'hs4h', 'he4h', 'hs5h', 'he5h',
+           				'hs1m', 'he1m', 'hs2m', 'he2m', 'hs3m', 'he3m', 'hs4m', 'he4m', 'hs5m', 'he5m')"
+           				required>
+           					<!-- Avioneta --> 
+           					<option value=" ">-----</option>
+   							<option value="PA28">PA28</option>
+   							<option value="DA42">DA42</option>
+   							<option value="PA34">PA34</option>
+   							<option value="R2160i">R2160i</option>
+   							<option value="T67">T67</option>
+						</select>
+					</div>
+
+					<div class="input-field col s4 m3 l2">
+           				<select id="insp" name="insp" 
+           				onchange="bighourtest2('hs1h', 'he1h', 'hs2h', 'he2h', 
+           				'hs3h', 'he3h', 'hs4h', 'he4h', 'hs5h', 'he5h',
+           				'hs1m', 'he1m', 'hs2m', 'he2m', 'hs3m', 'he3m', 'hs4m', 'he4m', 'hs5m', 'he5m')"
+           				required>      		
+           					<!-- Inspección --> 
+           					<option value=" ">-----</option>
+   							<option value="50h">50h</option>
+   							<option value="100h">100h</option>
+   							<option value="200h">200h</option>
+   							<option value="500h">500h</option>
+   							<option value="1000h">1000h</option>
+   							<option value="2000h">2000h</option>
+   							<option value="30d">30d</option>
+   							<option value="90d">90d</option>
+   							<option value="120d">120d</option>
+   							<option value="1 año">1 año</option>
+   							<option value="3 años">3 años</option>
+   							<option value="6 años">6 años</option>
+   							<option value="Defecto">Defecto</option>
+   							<option value="Cambio motor">Cambio motor</option>
+   							<option value="Actualización">Actualización</option>
+						</select>
+					</div>
+      			</div>
+
+
+      			<!-- Texto tipo inspección --> 
+      			<div class="row">
+      				<i class="material-icons left">grid_on</i>
+      				<div class="input-field col s7 m7 l7">
+          				<textarea id="datos" name="datos" class="materialize-textarea" required></textarea>
+          				<label for="datos">Datos inspección</label>
+        			</div>
+        		</div>
+
+           		<div class="container" style='height:100px;'></div>
+
+				<!-- Botón para enviar los datos de la orden de trabajo --> 
+      			<div class="container">		
+      				<button type="submit" class="btn-large waves-effect waves-light green" 
+      				id="submitBtn" name="submitBtn" disabled>Enviar los datos y terminar
+    					<i class="material-icons right">send</i>
+  					</button>
+				</div>
+
+				<div class="container" style='height:100px;'></div>
+
+  			</form>
+  		</div>
+	</div>
+
+
+	<footer>
+  		<!-- Div donde cargará plantillaFooter.html -->
+  		<div id="pie"></div>
+	</footer>
+</body>
+</html>
