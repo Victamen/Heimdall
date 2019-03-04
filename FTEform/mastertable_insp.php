@@ -1,5 +1,5 @@
 <?php
-//Muestra total horas inspección en rango de fecha con filtros personalizados.
+//Muestra total horas inspección en rango de fecha de cierre con filtros personalizados.
 
 //Datos para conectar.
 $host = "localhost";
@@ -35,7 +35,7 @@ else {
 	FROM ftedata 
     WHERE orden LIKE '$mat' 
     AND airplane LIKE '$airplane' 
-    AND fecha BETWEEN '$fechas' AND '$fechae'
+    AND cierre BETWEEN '$fechas' AND '$fechae'
     AND insp LIKE '$insp' 
     AND id LIKE '$id'
     AND cert LIKE '$cert'

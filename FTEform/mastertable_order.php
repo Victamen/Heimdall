@@ -30,7 +30,7 @@ if(mysqli_connect_error()) {
 } 
 else {  
 	//Multiply hours *2.4 to get from 100 minutes format to 60 minutes format
-	$SELECT = "SELECT orden, airplane, insp, cert, MIN(fecha), estado, cierre FROM ftedata 
+	$SELECT = "SELECT orden, airplane, insp, id, cert, MIN(fecha), estado, cierre FROM ftedata 
     WHERE orden LIKE '$mat' 
     AND airplane LIKE '$airplane' 
     AND fecha BETWEEN '$fechas' AND '$fechae'
@@ -38,12 +38,12 @@ else {
     AND id LIKE '$id'
     AND cert LIKE '$cert'
     AND estado LIKE '$estado'
-    GROUP BY orden ORDER BY orden ASC";
+    GROUP BY orden, id ORDER BY orden ASC";
 
     //Prepare statement
    	$stmt = $mysqli->prepare($SELECT);
     $stmt->execute();
-    $stmt->bind_result($orden, $airplane, $insp, $cert, $fecha, $estado, $cierre);
+    $stmt->bind_result($orden, $airplane, $insp, $id, $cert, $fecha, $estado, $cierre);
     $stmt->store_result();
     $rnum = $stmt->num_rows;
 ?>
@@ -57,6 +57,7 @@ else {
                     <th>Orden</th>   
                     <th>Avión</th> 
                     <th>Inspección</th> 
+                    <th>Mecánico</th>
                     <th>Certificador</th> 
                     <th>Fecha inicio</th> 
                     <th>Estado</th> 
@@ -74,6 +75,7 @@ else {
                     <td><?php printf("%s", $orden);?></td>
                     <td><?php printf("%s", $airplane);?></td>
                     <td><?php printf("%s", $insp);?></td>
+                    <td><?php printf("%s", $id);?></td>
                     <td><?php printf("%s", $cert);?></td>
                     <td><?php printf("%s", $fecha);?></td>
                     <td><?php printf("%s", $estado);?></td>
