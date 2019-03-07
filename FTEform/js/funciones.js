@@ -43,7 +43,7 @@ function autocom() {
         	"JL": null,
 
         	//SENECA PA34
-        	"DY": null,
+        	"DY": null,//DECEASED, so sad, cry.
         	"HG": null,
         	"YX": null,	
 
