@@ -1,0 +1,114 @@
+<!-- Formulario siguiente orden certificador -->
+
+<!DOCTYPE HTML> <!-- Documento tipo HTML declarado -->
+<html lang="es"> <!-- Paquete de idioma en español -->
+
+<head>
+  	<title>Formulario de la orden de trabajo</title>
+  
+  	<!-- Etiquetas META e importaciones necesarias para las funciones del framework de Materialize -->
+  	<meta name="viewport" content="width=device-width, initial-scale=1"/> <!-- Comprobar diseño responsivo -->
+    <meta charset="utf-8"/> <!-- Formato de caracteres -->
+  	
+    <!-- CSS -->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="js/materialize.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/funciones.js"></script>
+    
+    <!-- Materialize hace uso de jQuery para sus funciones -->
+    <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+	<!-- Script de carga de datos -->
+  	<script>
+    	$(document).ready(function() {
+    		//Carga de plantillas.
+    		$("#cabecera").load("plantilla.html");
+    		$("#pie").load("plantillaFooter.html");
+
+    		//Configuración calendario.
+    		calend();
+    		$('.datepicker').datepicker({});
+    		$('.datepicker2').datepicker({format: 'yy'});
+    		$('select').formSelect();
+
+    		//Autocompletar matrículas y carga de turnos de trabajo.
+    		autocom();
+  		});
+  	</script>
+</head>
+
+
+<body>
+	<!-- Div donde cargará plantilla.html -->
+	<div id="cabecera"></div>
+
+	<div class="container">
+		
+		<div class="container" style='height:50px;'></div>
+		<h3>Datos a buscar</h3>
+		<div class="container" style='height:50px;'></div>
+ 	
+  		<!-- Aquí comienza el formulario -->
+  		<div class="row">
+    		<form action="mechdelete.php" class="col s12" method="POST">
+    			<!-- Código de la orden de trabajo -->
+      			<div class="row">
+      				<i class="material-icons left">airplanemode_active</i>
+      					<div class="input-field col s4 m2 l2">
+           					<input type="text" class="validate" placeholder="TY02518" 
+           					minlength="7" maxlength="7" id="orden" name="orden" required>
+           				</div>
+           			<label>Escribe la orden sin guiones y en mayúscula</label>
+           		</div>
+
+    			<!-- Fecha de la orden de trabajo actual -->   
+      			<div class="row">
+      				<i class="material-icons left">event</i>
+      				<div class="input-field col s6 m3 l3">
+           				<input type="date" class="date" id="fecha" name="fecha"
+           				required>
+           			</div>
+           			<label>Fecha orden</label>
+      			</div>	
+
+      			<!-- Mecánico de la orden de trabajo actual -->   
+      			<div class="row">
+      				<i class="material-icons left">account_circle</i>
+      				<div class="input-field col s6 m3 l3">
+      					<input style="text-transform: lowercase" type="text" class="validate" 
+      					placeholder="nombre.apellido" id="mechname" name="mechname" required>
+    				</div>
+    				<label>Nombre mecánico</label>
+    			</div>
+
+
+      			<div class="container" style='height:100px;'></div>
+
+
+				<!-- Botón para enviar los datos de la orden de trabajo --> 
+      			<div class="container">		
+      				<button type="submit" class="btn-large waves-effect waves-light green" 
+      				id="submitBtn" name="submitBtn">Buscar mecánico
+    					<i class="material-icons right">send</i>
+  					</button>
+				</div>
+
+				<div class="container" style='height:100px;'></div>
+
+  			</form>
+  		</div>
+	</div>
+
+
+	<footer>
+  		<!-- Div donde cargará plantillaFooter.html -->
+  		<div id="pie"></div>
+	</footer>
+</body>
+</html>

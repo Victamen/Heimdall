@@ -166,9 +166,6 @@ else {
     AND ftedata.id = '$id_comp' AND ftecp.datos5c != ''";
 
 
-    //$DELETE_RECORD = "DELETE FROM ftedata WHERE 
-    //ftedata.orden = '$orden_comp' AND ftedata.fecha = '$fecha_comp' AND ftedata.id = '$id_comp'";
-
     //Ejecución de sentencias preparadas INSERT.
     $action = $mysqli->prepare($INSERT_ORDER);
     $action->bind_param("s", $orden);
@@ -367,11 +364,7 @@ else {
     $action = $mysqli->prepare($UPDATE_DATOS5);
     $action->execute();
     $action->close();
-
-
-    //$action = $mysqli->prepare($DELETE_RECORD);
-    //$action->execute();
-    //$action->close();
+    
 
     header('Location: /FTEform/mechupdate_cheers.html');
 

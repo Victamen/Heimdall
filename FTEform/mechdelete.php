@@ -25,7 +25,16 @@ else {
 	$_SESSION["fecha"] = $fecha;
 	$_SESSION["mechname"] = $mechname;
 
-    header('Location: /FTEform/formuedit_update.html');
+	//Borrado de la Base de Datos los datos del mecánico seleccionado.
+    $DELETE_RECORD = "DELETE FROM ftedata WHERE 
+    ftedata.orden = '$orden' AND ftedata.fecha = '$fecha' AND ftedata.id = '$mechname'";
+
+
+    $action = $mysqli->prepare($DELETE_RECORD);
+    $action->execute();
+    $action->close();
+
+    header('Location: /FTEform/mechupdate_cheers.html');
    	
    	$mysqli->close();
 }
